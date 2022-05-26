@@ -48,6 +48,8 @@ public class TreeNode<TK, TV>
     }
 
     public IReadOnlyCollection<TreeNode<TK, TV>> Children => _children.ToImmutableArray();
+    public int DirectChildrenCount => _children.Count;
+    public bool HasChildren => _children.Count > 0;
 
     public IEnumerable<TR> SelectForward<TR>(Func<TreeNode<TK, TV>, TR> fn)
     {
