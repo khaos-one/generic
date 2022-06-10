@@ -8,7 +8,7 @@ public class TreeNode<TK, TV>
     where TK : IEquatable<TK>
 {
     public TK Key { get; }
-    public TV? Value { get; }
+    public TV? Value { get; set; }
 
     private readonly ObservableCollection<TreeNode<TK, TV>> _children = new();
     private readonly HashSet<TK> _keysLookup = new();
