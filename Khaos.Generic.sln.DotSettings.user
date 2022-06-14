@@ -2,5 +2,9 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3ef88ed3_002D055c_002D4e54_002D9541_002D9687bf73b7d2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ProperlyAddNodes" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::6E8ABC98-13A3-4A86-8250-2F98693173E5::net6.0::Khaos.Generic.Trees.Tests.Straight.TreeNodeShould&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C82C7ABF-5E32-4743-8FDA-2A18F94779C6::net6.0::Khaos.Generic.SearchIndexes.Tests.HashSuggesterShould.SuggestElementsBasedOnIntersectingFeatures&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C82C7ABF-5E32-4743-8FDA-2A18F94779C6::net6.0::Khaos.Generic.SearchIndexes.Tests.HashSuggesterShould.SuggestElementsBasedOnIntersectingFeatures1&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C82C7ABF-5E32-4743-8FDA-2A18F94779C6::net6.0::Khaos.Generic.SearchIndexes.Tests.ConcurrentHashSuggesterShould.SuggestElementsBasedOnIntersectingFeatures1&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C82C7ABF-5E32-4743-8FDA-2A18F94779C6::net6.0::Khaos.Generic.SearchIndexes.Tests.ConcurrentHashSuggesterShould.SuggestElementsWhenIntersecting&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
