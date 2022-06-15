@@ -40,7 +40,7 @@ public class HashSuggester<TK, TV>
         return true;
     }
 
-    public IReadOnlyCollection<TV> Suggest(IReadOnlyCollection<TK> features)
+    public IReadOnlyCollection<TV> Suggest(IReadOnlyCollection<TK> features, bool onlyIntersecting = false)
     {
         if (features.Count == 0)
         {
@@ -59,7 +59,14 @@ public class HashSuggester<TK, TV>
                 }
                 else
                 {
-                    suggested.IntersectWith(suggestedElement);
+                    if (onlyIntersecting)
+                    {
+                        suggested.IntersectWith(suggestedElement);
+                    }
+                    else
+                    {
+                        suggested.UnionWith(suggestedElement);
+                    }
                 }
             }
         }

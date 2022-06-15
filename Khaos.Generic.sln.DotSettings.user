@@ -6,5 +6,6 @@
     &lt;TestId&gt;xUnit::C82C7ABF-5E32-4743-8FDA-2A18F94779C6::net6.0::Khaos.Generic.SearchIndexes.Tests.HashSuggesterShould.SuggestElementsBasedOnIntersectingFeatures1&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::C82C7ABF-5E32-4743-8FDA-2A18F94779C6::net6.0::Khaos.Generic.SearchIndexes.Tests.ConcurrentHashSuggesterShould.SuggestElementsBasedOnIntersectingFeatures1&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::C82C7ABF-5E32-4743-8FDA-2A18F94779C6::net6.0::Khaos.Generic.SearchIndexes.Tests.ConcurrentHashSuggesterShould.SuggestElementsWhenIntersecting&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C82C7ABF-5E32-4743-8FDA-2A18F94779C6::net6.0::Khaos.Generic.SearchIndexes.Tests.HashSuggesterShould.SuggestElementsBasedOnIntersectingReal1&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
