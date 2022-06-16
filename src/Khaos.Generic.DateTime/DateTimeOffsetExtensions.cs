@@ -51,6 +51,19 @@ public static class DateTimeOffsetExtensions
             }
         }
 
-        return Enumerable.Range(0, roundHours).Select(hour => start + TimeSpan.FromHours(hour));
+        return Enumerable.Range(0, roundHours).Select(hour => start.AddHours(hour));
+    }
+
+    public static IEnumerable<DateTimeOffset> EnumerateAllDatesTo(
+        this DateTimeOffset start, DateTimeOffset end)
+    {
+        if (end < start)
+        {
+            throw new ArgumentException("Start date is greater than the end date.", nameof(end));
+        }
+
+        var delta = (end - start).Days;
+
+        return Enumerable.Range(0, 1 + delta).Select(offset => start.AddDays(offset));
     }
 }
