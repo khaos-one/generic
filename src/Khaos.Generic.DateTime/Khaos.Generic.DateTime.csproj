@@ -7,7 +7,7 @@
         <Version>1.0.1</Version>
         <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
         <Authors>Egor Petenev</Authors>
-        <PackageProjectUrl>https://github.com/khaos-one/mediatr-rpc</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/khaos-one/generic</PackageProjectUrl>
     </PropertyGroup>
 
 </Project>
