@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.SearchIndexes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.DateTime", "src\Khaos.Generic.DateTime\Khaos.Generic.DateTime.csproj", "{7ABABF1A-B4D2-4358-B4DA-C60F108D44D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.MethodInterceptor", "src\Khaos.Generic.MethodInterceptor\Khaos.Generic.MethodInterceptor.csproj", "{3C766395-1C1F-469E-B273-DDA934619680}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{7ABABF1A-B4D2-4358-B4DA-C60F108D44D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ABABF1A-B4D2-4358-B4DA-C60F108D44D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ABABF1A-B4D2-4358-B4DA-C60F108D44D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C766395-1C1F-469E-B273-DDA934619680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C766395-1C1F-469E-B273-DDA934619680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C766395-1C1F-469E-B273-DDA934619680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C766395-1C1F-469E-B273-DDA934619680}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
