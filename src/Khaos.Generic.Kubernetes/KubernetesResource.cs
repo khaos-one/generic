@@ -25,9 +25,9 @@ public abstract class KubernetesResource<TMeta, TSpec, TStatus>
     [JsonPropertyName("kind")]
     public abstract string Kind { get; set; }
     [JsonPropertyName("metadata")]
-    public required TMeta Metadata { get; set; }
-    public required TSpec Spec { get; set; }
-    public required TStatus Status { get; set; }
+    public TMeta Metadata { get; set; }
+    public TSpec Spec { get; set; }
+    public TStatus Status { get; set; }
 }
 
 public interface IKubernetesResource<TMeta, TSpec> 
@@ -41,9 +41,9 @@ public abstract class KubernetesResource<TMeta, TSpec>
     [JsonPropertyName("kind")]
     public abstract string Kind { get; set; }
     [JsonPropertyName("metadata")]
-    public required TMeta Metadata { get; set; }
-    public required TSpec Spec { get; set; }
-    public required V1Status Status { get; set; }
+    public TMeta Metadata { get; set; }
+    public TSpec Spec { get; set; }
+    public V1Status Status { get; set; }
 }
 
 public interface IKubernetesResource<TSpec> 
@@ -57,10 +57,10 @@ public abstract class KubernetesResource<TSpec>
     [JsonPropertyName("kind")]
     public abstract string Kind { get; set; }
     [JsonPropertyName("metadata")]
-    public required V1ObjectMeta Metadata { get; set; }
+    public V1ObjectMeta Metadata { get; set; }
 
     [JsonPropertyName("spec")]
-    public required TSpec Spec { get; set; }
+    public TSpec Spec { get; set; }
     [JsonPropertyName("status")]
-    public required V1Status Status { get; set; }
+    public V1Status Status { get; set; }
 }

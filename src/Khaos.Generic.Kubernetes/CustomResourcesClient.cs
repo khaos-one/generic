@@ -30,15 +30,8 @@ public interface ICustomResourcesClient
         where TResource : class, IKubernetesObject, new();
 }
 
-public class CustomResourcesClient : ICustomResourcesClient
+public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesClient
 {
-    private readonly IKubernetes baseClient;
-
-    public CustomResourcesClient(IKubernetes baseClient)
-    {
-        this.baseClient = baseClient;
-    }
-
     public async Task<TResource?> GetAsync<TResource>(string name, string @namespace = "default",
         CancellationToken cancellationToken = default)
         where TResource : class, IKubernetesObject, new()
