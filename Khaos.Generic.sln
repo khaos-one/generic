@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.DateTime", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.MethodInterceptor", "src\Khaos.Generic.MethodInterceptor\Khaos.Generic.MethodInterceptor.csproj", "{3C766395-1C1F-469E-B273-DDA934619680}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.Kubernetes", "src\Khaos.Generic.Kubernetes\Khaos.Generic.Kubernetes.csproj", "{B12050B5-4D8C-4843-92D8-25438B5718BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.Kubernetes.CustomResources", "src\Khaos.Generic.Kubernetes.CustomResources\Khaos.Generic.Kubernetes.CustomResources.csproj", "{56E12129-9D0A-422B-9FF1-5071F2AA7003}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +52,13 @@ Global
 		{3C766395-1C1F-469E-B273-DDA934619680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C766395-1C1F-469E-B273-DDA934619680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C766395-1C1F-469E-B273-DDA934619680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B12050B5-4D8C-4843-92D8-25438B5718BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B12050B5-4D8C-4843-92D8-25438B5718BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B12050B5-4D8C-4843-92D8-25438B5718BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B12050B5-4D8C-4843-92D8-25438B5718BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E12129-9D0A-422B-9FF1-5071F2AA7003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E12129-9D0A-422B-9FF1-5071F2AA7003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E12129-9D0A-422B-9FF1-5071F2AA7003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E12129-9D0A-422B-9FF1-5071F2AA7003}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
