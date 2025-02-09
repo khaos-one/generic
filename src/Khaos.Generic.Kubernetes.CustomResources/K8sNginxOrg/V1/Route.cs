@@ -40,6 +40,9 @@ public sealed record RouteActionProxy
     [JsonPropertyName("upstream")]
     public string Upstream { get; init; } = default!;
 
+    [JsonPropertyName("rewritePath")]
+    public string RewritePath { get; init; } = default!;
+
     [JsonPropertyName("requestHeaders")]
     public RequestHeaders? RequestHeaders { get; init; }
 }
@@ -50,13 +53,18 @@ public sealed record RequestHeaders
     public bool? Pass { get; init; }
 
     [JsonPropertyName("set")]
-    public ICollection<RequestHeaderConfig>? Set { get; init; }
+    public ICollection<HeaderConfig>? Set { get; init; }
     
     [JsonPropertyName("add")]
-    public ICollection<RequestHeaderConfig>? Add { get; init; }
+    public ICollection<HeaderConfig>? Add { get; init; }
 }
 
-public sealed record RequestHeaderConfig
+public sealed record ResponseHeaders
+{
+    public ICollection<HeaderConfig>? Add { get; init; }
+}
+
+public sealed record HeaderConfig
 {
     [JsonPropertyName("name")]
     public string Name { get; init; } = default!;
