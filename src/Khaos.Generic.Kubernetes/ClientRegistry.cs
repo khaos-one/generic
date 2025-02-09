@@ -4,7 +4,12 @@ using Microsoft.Extensions.Options;
 
 namespace Khaos.Generic.Kubernetes;
 
-internal class BaseClientRegistry(IOptions<Options> options)
+public interface IClientRegistry
+{
+    IKubernetes GetClient(string clusterName);
+}
+
+internal class ClientRegistry(IOptions<Options> options) : IClientRegistry
 {
     private readonly ConcurrentDictionary<string, IKubernetes> _clients = new();
 
@@ -16,7 +21,7 @@ internal class BaseClientRegistry(IOptions<Options> options)
             {
                 throw new ArgumentException($"Cluster {cluster} not found");
             }
-
+            
             return new k8s.Kubernetes(clusterOptions);
         });
     }

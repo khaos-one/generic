@@ -51,6 +51,9 @@ public sealed record RequestHeaders
 
     [JsonPropertyName("set")]
     public ICollection<RequestHeaderConfig>? Set { get; init; }
+    
+    [JsonPropertyName("add")]
+    public ICollection<RequestHeaderConfig>? Add { get; init; }
 }
 
 public sealed record RequestHeaderConfig

@@ -3,42 +3,17 @@ using k8s.Models;
 
 namespace Khaos.Generic.Kubernetes;
 
-public interface ICustomResourcesClient
+public static class CustomResourcesClientExtensions
 {
-    Task<TResource?> GetAsync<TResource>(string name, string @namespace = "default",
-        CancellationToken cancellationToken = default)
-        where TResource : class, IKubernetesObject, new();
-    
-    Task<TResource?> PatchAsync<TResource>(
-        TResource resource,
-        string name,
-        string @namespace = "default",
-        CancellationToken cancellationToken = default)
-        where TResource : class, IKubernetesObject, new();
-    
-    Task<TResource?> DeleteAsync<TResource>(
-        string name,
-        string @namespace = "default",
-        CancellationToken cancellationToken = default)
-        where TResource : class, IKubernetesObject, new();
-    
-    Task<IList<TResource>> ListAsync<TResource>(
-        string @namespace = "default",
-        string? fieldSelector = null,
-        string? labelSelector = null,
-        CancellationToken cancellationToken = default)
-        where TResource : class, IKubernetesObject, new();
-}
-
-public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesClient
-{
-    public async Task<TResource?> GetAsync<TResource>(string name, string @namespace = "default",
+    public static async Task<TResource?> GetAsync<TResource>(
+        this ICustomObjectsOperations customObjectsOperations,
+        string name, string @namespace = "default",
         CancellationToken cancellationToken = default)
         where TResource : class, IKubernetesObject, new()
     {
         var (group, version, plural) = GetResourceInfo<TResource>();
         var result =
-            await baseClient.CustomObjects
+            await customObjectsOperations
                 .GetNamespacedCustomObjectAsync<TResource>(
                     group, version, @namespace, plural, name,
                     cancellationToken);
@@ -46,7 +21,8 @@ public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesCli
         return result;
     }
 
-    public async Task<TResource?> PatchAsync<TResource>(
+    public static async Task<TResource?> PatchAsync<TResource>(
+        this ICustomObjectsOperations customObjectsOperations,
         TResource resource,
         string name,
         string @namespace = "default",
@@ -55,7 +31,7 @@ public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesCli
     {
         var (group, version, plural) = GetResourceInfo<TResource>();
         var result =
-            await baseClient.CustomObjects
+            await customObjectsOperations
                 .PatchNamespacedCustomObjectAsync<TResource>(
                     new V1Patch(resource), 
                     group, version, @namespace, plural, name,
@@ -64,7 +40,8 @@ public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesCli
         return result;
     }
 
-    public async Task<TResource?> DeleteAsync<TResource>(
+    public static async Task<TResource?> DeleteAsync<TResource>(
+        this ICustomObjectsOperations customObjectsOperations,
         string name,
         string @namespace = "default",
         CancellationToken cancellationToken = default)
@@ -72,7 +49,7 @@ public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesCli
     {
         var (group, version, plural) = GetResourceInfo<TResource>();
         var result =
-            await baseClient.CustomObjects
+            await customObjectsOperations
                 .DeleteNamespacedCustomObjectAsync<TResource>(
                     group, version, @namespace, plural, name,
                     cancellationToken: cancellationToken);
@@ -80,7 +57,8 @@ public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesCli
         return result;
     }
 
-    public async Task<IList<TResource>> ListAsync<TResource>(
+    public static async Task<IList<TResource>> ListAsync<TResource>(
+        this ICustomObjectsOperations customObjectsOperations,
         string @namespace = "default",
         string? fieldSelector = null,
         string? labelSelector = null,
@@ -89,7 +67,7 @@ public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesCli
     {
         var (group, version, plural) = GetResourceInfo<TResource>();
         var result =
-            await baseClient.CustomObjects
+            await customObjectsOperations
                 .ListNamespacedCustomObjectAsync<ItemsList<TResource>>(
                     group, version, @namespace, plural,
                     fieldSelector: fieldSelector,
@@ -98,7 +76,7 @@ public class CustomResourcesClient(IKubernetes baseClient) : ICustomResourcesCli
 
         return result.Items;
     }
-
+    
     private static (string Group, string Version, string Plural) GetResourceInfo<TResource>()
         where TResource : class, IKubernetesObject, new()
     {
