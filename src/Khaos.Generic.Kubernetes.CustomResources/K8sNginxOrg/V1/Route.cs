@@ -45,6 +45,9 @@ public sealed record RouteActionProxy
 
     [JsonPropertyName("requestHeaders")]
     public RequestHeaders? RequestHeaders { get; init; }
+    
+    [JsonPropertyName("responseHeaders")]
+    public ResponseHeaders? ResponseHeaders { get; init; }
 }
 
 public sealed record RequestHeaders
