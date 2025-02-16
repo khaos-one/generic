@@ -24,6 +24,24 @@ public sealed record RouteAction
 
     [JsonPropertyName("proxy")]
     public RouteActionProxy? Proxy { get; init; }
+    
+    [JsonPropertyName("return")]
+    public RouteActionReturn? Return { get; init; }
+}
+
+public sealed record RouteActionReturn
+{
+    [JsonPropertyName("code")]
+    public ushort Code { get; init; }
+    
+    [JsonPropertyName("type")]
+    public string Type { get; init; }
+    
+    [JsonPropertyName("body")]
+    public string Body { get; init; }
+    
+    [JsonPropertyName("headers")]
+    public ICollection<HeaderConfig>? Headers { get; init; }
 }
 
 public sealed record RouteActionRedirect
