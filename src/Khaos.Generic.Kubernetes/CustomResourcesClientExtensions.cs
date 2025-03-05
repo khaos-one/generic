@@ -21,6 +21,24 @@ public static class CustomResourcesClientExtensions
         return result;
     }
 
+    public static async Task<TResource?> CreateAsync<TResource>(
+        this ICustomObjectsOperations customObjectsOperations,
+        TResource resource,
+        string @namespace = "default",
+        CancellationToken cancellationToken = default)
+        where TResource : class, IKubernetesObject, new()
+    {
+        var (group, version, plural) = GetResourceInfo<TResource>();
+        var result =
+            await customObjectsOperations
+                .CreateNamespacedCustomObjectAsync<TResource>(
+                    resource,
+                    group, version, @namespace, plural,
+                    cancellationToken: cancellationToken);
+
+        return result;
+    }
+
     public static async Task<TResource?> PatchAsync<TResource>(
         this ICustomObjectsOperations customObjectsOperations,
         TResource resource,
