@@ -6,3 +6,4 @@ bigquery.json
 sandbox/
 *.secret.*
 *.nupkg
+.DS_Store
