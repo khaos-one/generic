@@ -1,9 +1,7 @@
 namespace Khaos.Generic.SquidexCmsAddons.Auth;
 
-internal sealed class AuthenticatedHandler(
-    HttpMessageHandler innerHandler,
-    ICredentialTokensRetriever credentialTokensRetriever) 
-    : DelegatingHandler(innerHandler)
+internal sealed class AuthenticatedHandler(ICredentialTokensRetriever credentialTokensRetriever) 
+    : DelegatingHandler
 {
     protected override async Task<HttpResponseMessage> SendAsync(
         HttpRequestMessage request,
