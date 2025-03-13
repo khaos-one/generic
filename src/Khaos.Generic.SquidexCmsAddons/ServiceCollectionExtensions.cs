@@ -19,6 +19,9 @@ public static class ServiceCollectionExtensions
         Action<Auth.Options> configureOptions)
     {
         services.Configure(configureOptions);
+        services.AddMemoryCache();
+        services.AddScoped<ICredentialTokensRetriever, CredentialTokensRetriever>();
+        services.AddScoped<AuthenticatedHandler>();
 
         services.AddHttpClient<CredentialTokensRetriever>((sp, client) =>
         {
@@ -31,10 +34,6 @@ public static class ServiceCollectionExtensions
             .AddHttpClient(Constants.HttpClientName, ConfigureHttpClient)
             .AddHttpMessageHandler<AuthenticatedHandler>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
-
-        services.AddScoped<ICredentialTokensRetriever, CredentialTokensRetriever>();
-
-        services.AddMemoryCache();
 
         return services;
     }
