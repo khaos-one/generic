@@ -27,8 +27,12 @@ public static class ServiceCollectionExtensions
         })
         .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
 
-        services.AddTransient<ICredentialTokensRetriever, CredentialTokensRetriever>();
-        services.AddTransient<AuthenticatedHandler>();
+        services
+            .AddHttpClient(Constants.HttpClientName, ConfigureHttpClient)
+            .AddHttpMessageHandler<AuthenticatedHandler>()
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
+
+        services.AddScoped<ICredentialTokensRetriever, CredentialTokensRetriever>();
 
         services.AddMemoryCache();
 
@@ -47,44 +51,10 @@ public static class ServiceCollectionExtensions
         IConfiguration configuration) =>
         AddSquidexAuthenticatedHttpHandler(services, configuration.Bind);
 
-    /// <summary>
-    /// Adds an implementation of <see cref="HttpClient"/> to the service collection. Use it
-    /// instead of a regular <see cref="HttpClient"/> to benefit from the authenticated handler.
-    /// </summary>
-    /// <param name="services">The service collection to add the handler to.</param>
-    /// <param name="clientName">The name of the client to add.</param>
-    /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddSquidexHttpClient<TClient>(this IServiceCollection services)
-        where TClient : class
-    {
-        services
-            .AddHttpClient<TClient>(ConfigureHttpClient)
-            .AddHttpMessageHandler<AuthenticatedHandler>()
-            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
-
-        return services;
-    }
-
-    /// <summary>
-    /// Adds an implementation of <see cref="HttpClient"/> to the service collection. Use it
-    /// instead of a regular <see cref="HttpClient"/> to benefit from the authenticated handler.
-    /// </summary>
-    /// <param name="services">The service collection to add the handler to.</param>
-    /// <param name="clientName">The name of the client to add.</param>
-    /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddSquidexHttpClient(this IServiceCollection services, string clientName)
-    {
-        services
-            .AddHttpClient(clientName, ConfigureHttpClient)
-            .AddHttpMessageHandler<AuthenticatedHandler>()
-            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
-
-        return services;
-    }
     private static void ConfigureHttpClient(IServiceProvider sp, HttpClient client)
     {
         var options = sp.GetRequiredService<IOptions<Auth.Options>>();
         client.BaseAddress = new Uri(options.Value.BaseUrl);
-        client.DefaultRequestHeaders.Add("X-Flatten", "1"); 
+        client.DefaultRequestHeaders.Add("X-Flatten", "1");
     }
 }
