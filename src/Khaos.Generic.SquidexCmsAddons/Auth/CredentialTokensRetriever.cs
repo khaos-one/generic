@@ -1,4 +1,3 @@
-
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using System.Security.Cryptography;
@@ -8,19 +7,20 @@ using System.Web;
 using System.Text.Json;
 
 namespace Khaos.Generic.SquidexCmsAddons.Auth;
+
 public interface ICredentialTokensRetriever
 {
     Task<CredentialTokens> GetCredentialTokensAsync(CancellationToken cancellationToken = default);
 }
 
-internal sealed class CredentialTokensRetriever(
+public sealed class CredentialTokensRetriever(
     IOptions<Options> options, 
-    HttpClient httpClient,
+    IHttpClientFactory httpClientFactory,
     IMemoryCache cache) 
     : ICredentialTokensRetriever
 {
 
-    private readonly HttpClient _httpClient = httpClient;
+    private readonly HttpClient _httpClient = httpClientFactory.CreateSquidexTokenResolverHttpClient();
     private readonly Options _options = options.Value;
     
 

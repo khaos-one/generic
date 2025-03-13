@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICredentialTokensRetriever, CredentialTokensRetriever>();
         services.AddScoped<AuthenticatedHandler>();
 
-        services.AddHttpClient<CredentialTokensRetriever>((sp, client) =>
+        services.AddHttpClient(Constants.TokenResolverHttpClientName, (sp, client) =>
         {
             var options = sp.GetRequiredService<IOptions<Auth.Options>>();
             client.BaseAddress = new Uri(options.Value.BaseUrl);
