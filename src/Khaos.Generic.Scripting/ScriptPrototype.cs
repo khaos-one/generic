@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Khaos.Generic.Scripting;
 
 public record ScriptPrototype(
@@ -9,4 +6,7 @@ public record ScriptPrototype(
     IReadOnlyCollection<Type>? ReferenceAssembliesContainingTypes = null,
     IReadOnlyCollection<string>? ReferenceAssembliesByFileNames = null,
     string EntryTypeName = "Script",
-    string EntryMethodName = "Main"); 
+    string EntryMethodName = "Main",
+    bool IsExpression = false,
+    Type? ExpressionInputType = null,
+    IReadOnlyCollection<string>? ExpressionUsingDirectives = null); 
