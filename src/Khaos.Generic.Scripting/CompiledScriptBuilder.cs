@@ -5,51 +5,39 @@ namespace Khaos.Generic.Scripting;
 
 public class CompiledScriptBuilder
 {
-    private string _name;
-    private string _script;
-    private IReadOnlyCollection<Type>? _referenceAssembliesContainingTypes;
-    private IReadOnlyCollection<string>? _referenceAssembliesByFileNames;
-    private string _entryTypeName = "Script";
-    private string _entryMethodName = "Main";
+    private ScriptPrototype _config;
 
     public CompiledScriptBuilder(string name, string script)
     {
-        _name = name;
-        _script = script;
+        _config = new ScriptPrototype(name, script);
     }
 
     public CompiledScriptBuilder WithReferenceAssembliesContainingTypes(IReadOnlyCollection<Type> types)
     {
-        _referenceAssembliesContainingTypes = types;
+        _config = _config with { ReferenceAssembliesContainingTypes = types };
         return this;
     }
 
     public CompiledScriptBuilder WithReferenceAssembliesByFileNames(IReadOnlyCollection<string> fileNames)
     {
-        _referenceAssembliesByFileNames = fileNames;
+        _config = _config with { ReferenceAssembliesByFileNames = fileNames };
         return this;
     }
 
     public CompiledScriptBuilder WithEntryTypeName(string entryTypeName)
     {
-        _entryTypeName = entryTypeName;
+        _config = _config with { EntryTypeName = entryTypeName };
         return this;
     }
 
     public CompiledScriptBuilder WithEntryMethodName(string entryMethodName)
     {
-        _entryMethodName = entryMethodName;
+        _config = _config with { EntryMethodName = entryMethodName };
         return this;
     }
 
     public CompiledScript Build()
     {
-        return new CompiledScript(
-            _name,
-            _script,
-            _referenceAssembliesContainingTypes,
-            _referenceAssembliesByFileNames,
-            _entryTypeName,
-            _entryMethodName);
+        return new CompiledScript(_config);
     }
 } 
