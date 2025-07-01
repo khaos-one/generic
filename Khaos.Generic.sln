@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-#
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.Trees", "src\Khaos.Generic.Trees\Khaos.Generic.Trees.csproj", "{B8123853-F1DB-42FC-BD30-8F45C2A2BCEF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.Sandbox", "sandbox\Khaos.Generic.Sandbox\Khaos.Generic.Sandbox.csproj", "{3326A8F5-9097-4359-8C5B-44415DD92AFB}"
@@ -22,6 +22,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.SquidexCmsAddons", "src\Khaos.Generic.SquidexCmsAddons\Khaos.Generic.SquidexCmsAddons.csproj", "{4FCC45E4-5CFF-4710-A3C7-F979CC617C37}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.SquidexCmsAddons.Tests", "tests\Khaos.Generic.SquidexCmsAddons.Tests\Khaos.Generic.SquidexCmsAddons.Tests.csproj", "{A4F32C0A-73C8-4923-8732-97E73DDAC12E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4CC3E5D6-FAB6-4892-BAD2-067A232690FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khaos.Generic.Scripting", "src\Khaos.Generic.Scripting\Khaos.Generic.Scripting.csproj", "{BC4618FC-A0C5-4B47-B451-150219A11218}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,7 +77,12 @@ Global
 		{A4F32C0A-73C8-4923-8732-97E73DDAC12E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4F32C0A-73C8-4923-8732-97E73DDAC12E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4F32C0A-73C8-4923-8732-97E73DDAC12E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4618FC-A0C5-4B47-B451-150219A11218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4618FC-A0C5-4B47-B451-150219A11218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4618FC-A0C5-4B47-B451-150219A11218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4618FC-A0C5-4B47-B451-150219A11218}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{BC4618FC-A0C5-4B47-B451-150219A11218} = {4CC3E5D6-FAB6-4892-BAD2-067A232690FB}
 	EndGlobalSection
 EndGlobal
