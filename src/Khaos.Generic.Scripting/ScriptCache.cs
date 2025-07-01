@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Khaos.Generic.Scripting;
 
@@ -30,6 +31,30 @@ public class ScriptCache
         }
 
         return script.Invoke<TResult>(args);
+    }
+
+    public async Task<TResult?> InvokeAsync<TResult>(ScriptPrototype prototype, params object[] args)
+    {
+        var cacheKey = GenerateCacheKey(prototype);
+        if (_cache.TryGetValue(cacheKey, out var script))
+        {
+            if (IsScriptUpdated(script, prototype))
+            {
+                if (_cache.TryRemove(cacheKey, out var oldScript))
+                {
+                    oldScript.Dispose();
+                }
+                script = new CompiledScript(prototype);
+                _cache.TryAdd(cacheKey, script);
+            }
+        }
+        else
+        {
+            script = new CompiledScript(prototype);
+            _cache.TryAdd(cacheKey, script);
+        }
+
+        return await script.InvokeAsync<TResult>(args);
     }
 
     private string GenerateCacheKey(ScriptPrototype prototype)

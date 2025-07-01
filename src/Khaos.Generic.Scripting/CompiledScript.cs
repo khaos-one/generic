@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Runtime.Loader;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Khaos.Generic.Scripting;
 
@@ -53,6 +54,29 @@ public class CompiledScript : IDisposable
         }
         
         return (TResult?) EntryPoint.Invoke(Instance, args);
+    }
+
+    public async Task<TResult?> InvokeAsync<TResult>(params object[] args)
+    {
+        if (EntryPoint is null)
+        {
+            throw new InvalidOperationException("Entry point is not set");
+        }
+
+        var result = EntryPoint.Invoke(Instance, args);
+        if (result is Task<TResult> task)
+        {
+            return await task;
+        }
+        else if (result is Task taskWithoutResult)
+        {
+            await taskWithoutResult;
+            return default;
+        }
+        else
+        {
+            return (TResult?)result;
+        }
     }
 
     private void Destroy()
